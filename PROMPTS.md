@@ -7,8 +7,7 @@ The prompts below document the major development iterations, including document 
 
 ## Prompt 1: Initial Requirements Analysis & Project Architecture
 
-- **Tool:** Google AI Studio
-- **Model:** Gemini Flash
+- **Tool:** AI Assistant
 - **Objective:** Establish the project structure and understand the two supplied PDF exercises before implementation.
 
 - **Prompt:**
@@ -42,8 +41,7 @@ The prompts below document the major development iterations, including document 
 
 ## Prompt 2: Exercise 1 — Worker Progress Report
 
-- **Tool:** Google AI Studio
-- **Model:** Gemini Flash
+- **Tool:** AI Assistant
 - **Objective:** Implement the first reference document with dynamic data.
 
 - **Prompt:**
@@ -77,7 +75,7 @@ The prompts below document the major development iterations, including document 
 
 ## Prompt 3: Exercise 1 — Dynamic Data Binding
 
-- **Tool:** Google AI Studio
+- **Tool:** AI Assistant
 - **Objective:** Make the document genuinely data-driven rather than a static reproduction.
 
 - **Prompt:**
@@ -102,8 +100,7 @@ The prompts below document the major development iterations, including document 
 
 ## Prompt 4: Exercise 2 — Medical & Travel Expense Request
 
-- **Tool:** Google AI Studio
-- **Model:** Gemini Flash
+- **Tool:** AI Assistant
 - **Objective:** Implement the second and more dynamic reference document.
 
 - **Prompt:**
@@ -140,7 +137,7 @@ The prompts below document the major development iterations, including document 
 
 ## Prompt 5: Dynamic Table Rendering
 
-- **Tool:** Google AI Studio
+- **Tool:** AI Assistant
 - **Objective:** Ensure Exercise 2 handles variable numbers of records.
 
 - **Prompt:**
@@ -163,7 +160,7 @@ The prompts below document the major development iterations, including document 
 
 ## Prompt 6: Fixed Physical Page Layout
 
-- **Tool:** Google AI Studio
+- **Tool:** AI Assistant
 - **Objective:** Correct the difference between normal responsive web layout and fixed document layout.
 
 - **Prompt:**
@@ -188,7 +185,7 @@ The prompts below document the major development iterations, including document 
 
 ## Prompt 7: Print CSS & PDF Output
 
-- **Tool:** Google AI Studio
+- **Tool:** AI Assistant
 - **Objective:** Make browser printing reproduce the intended document pages.
 
 - **Prompt:**
@@ -213,7 +210,7 @@ The prompts below document the major development iterations, including document 
 
 ## Prompt 8: Dynamic Pagination for Exercise 2
 
-- **Tool:** Google AI Studio
+- **Tool:** AI Assistant
 - **Objective:** Handle large datasets without destroying the reference layout.
 
 - **Prompt:**
@@ -244,7 +241,7 @@ The prompts below document the major development iterations, including document 
 
 ## Prompt 9: Live Form ↔ JSON State
 
-- **Tool:** Google AI Studio
+- **Tool:** AI Assistant
 - **Objective:** Demonstrate the relationship between user-entered data and generated output.
 
 - **Prompt:**
@@ -273,7 +270,7 @@ The prompts below document the major development iterations, including document 
 
 ## Prompt 10: Visual Fidelity Correction Pass
 
-- **Tool:** Google AI Studio
+- **Tool:** AI Assistant
 - **Objective:** Correct visual discrepancies discovered during testing.
 
 - **Prompt:**
@@ -305,7 +302,7 @@ The prompts below document the major development iterations, including document 
 
 ## Prompt 11: Dynamic Dataset Verification
 
-- **Tool:** Google AI Studio
+- **Tool:** AI Assistant
 - **Objective:** Verify that the solution is genuinely data-driven.
 
 - **Prompt:**
@@ -339,7 +336,7 @@ The prompts below document the major development iterations, including document 
 
 ## Prompt 12: Hardcoding & Genericity Audit
 
-- **Tool:** Google AI Studio
+- **Tool:** AI Assistant
 - **Objective:** Ensure the renderer is not secretly designed only for the supplied PDFs.
 
 - **Prompt:**
@@ -365,7 +362,7 @@ The prompts below document the major development iterations, including document 
 
 ## Prompt 13: Final Regression & Submission Audit
 
-- **Tool:** Google AI Studio
+- **Tool:** AI Assistant
 - **Objective:** Perform a final verification before submission.
 
 - **Prompt:**
@@ -414,7 +411,7 @@ The prompts below document the major development iterations, including document 
 
 ## Prompt 14: Final Code Cleanup
 
-- **Tool:** Google AI Studio
+- **Tool:** AI Assistant
 - **Objective:** Clean the implementation without changing functionality.
 
 - **Prompt:**
