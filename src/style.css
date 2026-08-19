@@ -1,0 +1,499 @@
+/* Reset & Global */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #0f172a;
+  color: #1e293b;
+  line-height: 1.4;
+  font-size: 13px;
+  min-height: 100vh;
+}
+
+/* App Header & Navigation Bar */
+.app-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background-color: #0f172a;
+  border-bottom: 1px solid #1e293b;
+  color: #ffffff;
+  padding: 10px 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.header-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.brand-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-badge {
+  background: #005792;
+  color: #ffffff;
+  font-weight: 800;
+  font-size: 13px;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid rgba(255,255,255,0.2);
+  letter-spacing: 0.5px;
+}
+
+.brand-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: #ffffff;
+  display: block;
+  line-height: 1.2;
+}
+
+.brand-subtitle {
+  font-size: 11px;
+  color: #94a3b8;
+  display: block;
+}
+
+/* Toggle Tabs */
+.tab-group {
+  display: inline-flex;
+  background: #1e293b;
+  padding: 3px;
+  border-radius: 8px;
+  border: 1px solid #334155;
+}
+
+.tab-btn {
+  background: transparent;
+  color: #94a3b8;
+  border: none;
+  padding: 6px 14px;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.tab-btn:hover {
+  color: #ffffff;
+  background: rgba(255,255,255,0.05);
+}
+
+.tab-btn.active {
+  background: #005792;
+  color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+/* Control Buttons & View Selectors */
+.controls-group {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 6px 13px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+  user-select: none;
+  text-decoration: none;
+}
+
+.btn-primary {
+  background: #005792;
+  color: #ffffff;
+  border-color: #004575;
+}
+.btn-primary:hover { background: #004575; }
+
+.btn-accent {
+  background: #d4af37;
+  color: #0f172a;
+  font-weight: 800;
+}
+.btn-accent:hover { background: #c29d28; }
+
+.btn-dark {
+  background: #1e293b;
+  color: #cbd5e1;
+  border-color: #334155;
+}
+.btn-dark:hover { background: #334155; color: #ffffff; }
+
+/* Main Workspace */
+.workspace-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px 16px 60px 16px;
+}
+
+.info-banner {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 10px 16px;
+  margin-bottom: 18px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: #cbd5e1;
+}
+
+.preset-picker {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.preset-select {
+  background: #0f172a;
+  color: #ffffff;
+  border: 1px solid #475569;
+  padding: 5px 10px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 600;
+  outline: none;
+}
+
+/* WCB Paper Document Styles */
+.wcb-document-sheet {
+  background: #ffffff;
+  color: #000000;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 40px 48px;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  font-size: 12.5px;
+  line-height: 1.35;
+  min-height: 1100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform-origin: top center;
+  transition: transform 0.15s ease;
+}
+
+/* Header 3-Column */
+.doc-top-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  border-bottom: 1px solid #000000;
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+}
+
+.doc-logo-col {
+  width: 220px;
+  flex-shrink: 0;
+}
+
+.doc-address-col {
+  font-size: 11px;
+  line-height: 1.3;
+  color: #000000;
+}
+
+.doc-title-col {
+  text-align: right;
+}
+
+.doc-main-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000000;
+  margin-bottom: 6px;
+  line-height: 1.2;
+}
+
+.claim-badge-box {
+  border: 2px solid #000000;
+  display: inline-flex;
+  font-family: monospace;
+  font-weight: bold;
+  font-size: 13.5px;
+}
+
+.claim-badge-num {
+  padding: 4px 10px;
+  border-right: 2px solid #000000;
+}
+
+.claim-badge-code {
+  padding: 4px 8px;
+  background: #f1f5f9;
+}
+
+/* Checkbox & Boxes */
+.doc-box {
+  border: 1px solid #000000;
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  background: #ffffff;
+}
+
+.chk-box {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #000000;
+  margin-right: 6px;
+  vertical-align: middle;
+  font-size: 10px;
+  font-weight: bold;
+  line-height: 1;
+  user-select: none;
+}
+
+.chk-box.checked {
+  background: #000000;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+.line-input {
+  border-bottom: 1px solid #000000;
+  display: inline-block;
+  min-width: 140px;
+  text-align: center;
+  font-weight: 600;
+  padding: 0 4px 2px 4px;
+}
+
+/* Data Tables */
+table.wcb-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11.5px;
+  margin-bottom: 14px;
+}
+
+table.wcb-table th, table.wcb-table td {
+  border: 1px solid #000000;
+  padding: 5px 8px;
+  text-align: left;
+}
+
+table.wcb-table th {
+  background: #ffffff;
+  font-weight: bold;
+  color: #000000;
+}
+
+/* Document Footer */
+.doc-bottom-footer {
+  border-top: 1px solid #000000;
+  padding-top: 10px;
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  color: #000000;
+}
+
+/* Live Editor Forms */
+.editor-card {
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  color: #0f172a;
+}
+
+.editor-section {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  padding: 14px;
+  margin-bottom: 16px;
+}
+
+.editor-section-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #005792;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.form-field label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #475569;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.form-field input,
+.form-field select,
+.form-field textarea {
+  padding: 6px 10px;
+  border: 1px solid #cbd5e1;
+  border-radius: 4px;
+  font-size: 12px;
+  color: #0f172a;
+  outline: none;
+}
+
+.form-field input:focus,
+.form-field select:focus,
+.form-field textarea:focus {
+  border-color: #005792;
+  box-shadow: 0 0 0 2px rgba(0,87,146,0.15);
+}
+
+/* Split View Grid */
+.split-view-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+@media (max-width: 1024px) {
+  .split-view-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hidden-screen {
+  display: none;
+}
+
+/* Notification Toast */
+.toast-msg {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #005792;
+  color: #ffffff;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: slideUp 0.25s ease-out;
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* Print CSS */
+@media print {
+  .no-print,
+  .app-header,
+  .info-banner,
+  .controls-group,
+  .tab-group,
+  .btn,
+  .editor-card,
+  .toast-msg {
+    display: none !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  .workspace-container {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+  }
+
+  .split-view-grid {
+    display: block !important;
+  }
+
+  .split-view-grid > div:first-child {
+    display: none !important;
+  }
+
+  .hidden-screen {
+    display: block !important;
+  }
+
+  #paperDocContainer {
+    display: block !important;
+  }
+
+  .wcb-document-sheet {
+    box-shadow: none !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: 100% !important;
+    width: 100% !important;
+    transform: none !important;
+  }
+
+  .break-avoid,
+  .doc-box,
+  table.wcb-table tr {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+
+  @page {
+    size: letter portrait;
+    margin: 1.2cm 1.5cm;
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "WCB Manitoba Document Generator",
+  "description": "Interactive document generator and print suite for WCB Manitoba Worker Progress Reports and Medical & Travel Expense Requests with dynamic datasets and print-ready pagination.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
