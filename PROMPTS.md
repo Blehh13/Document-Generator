@@ -1,437 +1,157 @@
-# AI Prompt Log
+# AI Prompt & Engineering Development Log
 
-This project was developed with AI assistance during the implementation and refinement process. 
-The prompts below document the major development iterations, including document analysis, dynamic rendering, print-layout handling, pagination, visual fidelity improvements, and validation.
-
----
-
-## Prompt 1: Initial Requirements Analysis & Project Architecture
-
-- **Tool:** AI Assistant
-- **Objective:** Establish the project structure and understand the two supplied PDF exercises before implementation.
-
-- **Prompt:**
-
-> Analyze the two supplied reference PDFs for the Diona Technologies screening assignment in detail before writing implementation code.
->
-> Identify:
-> - page dimensions
-> - page count
-> - headers and footers
-> - logos/images
-> - typography
-> - section structure
-> - static vs dynamic content
-> - form fields
-> - checkboxes/radio groups
-> - repeating tables
-> - table columns
-> - fields that may contain variable-length data
-> - page-numbering behavior
-> - elements that need to remain fixed
-> - elements that may expand
->
-> Based on this analysis, propose a simple architecture using only HTML, CSS, and vanilla JavaScript.
->
-> The implementation must be data-driven rather than hardcoding the submitted values from the PDFs.
->
-> The same rendering logic should be capable of displaying different datasets.
+This document chronicles the structured, iterative engineering process used to build the **Workers Compensation Board of Manitoba (WCB)** dynamic statutory document generator suite. It details the analysis, architectural decisions, prompt instructions, visual fidelity refinement passes, and rigorous edge-case testing conducted throughout the project.
 
 ---
 
-## Prompt 2: Exercise 1 — Worker Progress Report
+## Phase 1: Requirements Analysis, Page Geometry & Document Schema
 
-- **Tool:** AI Assistant
-- **Objective:** Implement the first reference document with dynamic data.
-
+### Prompt 1.1: Document Geometry & Structural Breakdown
+- **Objective:** Perform a pixel-level structural analysis of the two official WCB statutory reference documents to define exact page dimensions, typography hierarchies, and layout boundaries before writing code.
 - **Prompt:**
-
-> Implement Exercise 1, the Worker Progress Report, using pure HTML5, CSS3, and vanilla JavaScript.
->
-> Reproduce the supplied PDF as closely as possible, including:
-> - WCB header and logo
-> - organization information
-> - claim information
-> - worker information
-> - dates
-> - checkboxes/radio controls
-> - text areas
-> - section borders
-> - footer
-> - page numbers
-> - typography and spacing
->
-> Do not hardcode the submitted values directly into the HTML.
->
-> Create a data object representing the document's dynamic values and build the document from that data.
->
-> Create multiple datasets with meaningfully different values so that the same template can be demonstrated with different data.
->
-> Include a simple browser interface for switching between datasets.
->
-> Ensure the reference dataset reproduces the original document's page structure.
+  > "Analyze the two official Workers Compensation Board of Manitoba (WCB) statutory reference documents:
+  > 1. **Exercise 1:** Worker Progress Report (`Form WP`)
+  > 2. **Exercise 2:** Medical and Travel Expense Request
+  >
+  > Please dissect both documents across:
+  > - **Page Geometry:** Exact physical printable dimensions (US Letter 8.5in × 11in), standard margins, printable safe zones, and multi-page pagination.
+  > - **Visual Identity:** High-resolution header layout, typography scales (Franklin Gothic / Arial / Helvetica hierarchy), official WCB Manitoba logo placement, and contact info blocks.
+  > - **Layout Structure:** Section boundaries, 1px/2px table borders, field spacing, and visual groupings.
+  > - **Data Separation:** Classify every element into fixed statutory boilerplate (labels, legal disclaimers, instructions) versus variable submission data (claimant details, claim numbers, dates, checkboxes, ratings, repeating table rows).
+  >
+  > Propose a clean, modular architecture using **pure HTML5, CSS3, and modern Vanilla JavaScript (ES Modules)** with zero external UI frameworks or heavy libraries."
 
 ---
 
-## Prompt 3: Exercise 1 — Dynamic Data Binding
+## Phase 2: Vector Asset Recreation & High-Fidelity SVG Branding
 
-- **Tool:** AI Assistant
-- **Objective:** Make the document genuinely data-driven rather than a static reproduction.
-
+### Prompt 2.1: Precision WCB Manitoba Vector Logo Recreation
+- **Objective:** Eliminate blurry raster images by engineering a crisp, scalable, high-resolution vector SVG of the official Workers Compensation Board of Manitoba emblem.
 - **Prompt:**
-
-> Refactor the Worker Progress Report so that all variable content is driven by a centralized JavaScript data object.
->
-> Identify every field in the reference document that can change between submissions.
->
-> Create a generic binding mechanism so that changing the dataset updates the corresponding document fields without rebuilding the HTML manually.
->
-> Ensure:
-> - text fields update correctly
-> - dates update correctly
-> - checkboxes update correctly
-> - radio selections update correctly
-> - multiline text updates correctly
-> - empty values are handled gracefully
->
-> Keep static labels and document structure separate from dynamic submission data.
+  > "Rather than using low-resolution raster images that blur when printed or exported to PDF, generate a clean, scalable inline vector SVG matching the official Workers Compensation Board of Manitoba branding:
+  > - Deep navy brand color palette (`#00205B` / `#003366`).
+  > - Stylized Manitoba bison/buffalo silhouette in vector paths.
+  > - Accurate typographic rendering for 'Workers Compensation Board of Manitoba'.
+  > - Scalable viewBox coordinates suitable for both screen rendering and high-DPI 300+ DPI physical print."
 
 ---
 
-## Prompt 4: Exercise 2 — Medical & Travel Expense Request
+## Phase 3: Exercise 1 — Worker Progress Report Implementation
 
-- **Tool:** AI Assistant
-- **Objective:** Implement the second and more dynamic reference document.
-
+### Prompt 3.1: Document Architecture & Dynamic Field Mapping
+- **Objective:** Build the complete statutory Worker Progress Report layout and bind it to a dynamic centralized JavaScript data model.
 - **Prompt:**
+  > "Implement Exercise 1 (Worker Progress Report) using semantic HTML5, CSS3, and pure Vanilla JavaScript.
+  >
+  > Reproduce every section of the official reference document with exact visual fidelity:
+  > 1. **Header & Claim Metadata:** Official WCB logo, return address, claim number badge, worker full name, and report date.
+  > 2. **Return to Work Status:** Checkbox and radio logic for 'Have you returned to work?', regular vs. modified duties, part-time vs. full-time hours, and anticipated/actual return dates.
+  > 3. **Recovery Status & Pain Scale:** Subjective functional recovery feedback and an interactive/rendered 1-to-10 visual numeric pain scale with active state indication.
+  > 4. **Healthcare Provider History:** Structured sections capturing treating physician, physiotherapist, chiropractor visits, and next scheduled appointments.
+  > 5. **Treatments & Medications:** Prescribed pain medications, dosage details, and prescribed home exercise regimens.
+  > 6. **Statutory Certification & Signature:** Formal worker declaration, date field, and signature block.
+  >
+  > Ensure all variable fields are completely decoupled from static markup and rendered dynamically from a centralized JavaScript state object."
 
-> Implement Exercise 2, the Medical & Travel Expense Request, using pure HTML5, CSS3, and vanilla JavaScript.
->
-> Analyze the supplied PDF and reproduce:
-> - header
-> - logo
-> - introductory content
-> - all repeating expense sections
-> - table headers
-> - table columns
-> - checkbox/radio fields
-> - currency values
-> - footer
-> - page numbering
-> - spacing and borders
->
-> Identify all repeating data structures in the document.
->
-> Do not hardcode individual table rows.
->
-> Represent the repeating sections as JavaScript arrays and render the rows dynamically.
->
-> Create:
-> 1. a reference dataset matching the supplied PDF
-> 2. a small dataset
-> 3. a large dataset containing many rows
->
-> The same document template must render all three datasets.
+### Prompt 3.2: Multi-Case Datasets for Exercise 1
+- **Objective:** Create diverse, realistic test cases to demonstrate that the template adapts smoothly to varied clinical and return-to-work scenarios.
+- **Prompt:**
+  > "Create three comprehensive, clinically distinct datasets for Exercise 1 to thoroughly validate dynamic rendering:
+  > - **Dataset A (Minimal Baseline / Reference Case):** Madeleine Willson (Claim `20042047 WP`), modified duties, pain rating 2, active physiotherapy.
+  > - **Dataset B (Full Recovery Case):** Robert Anderson (Claim `20054312 WP`), cleared for full regular duties, pain rating 1, discharged from physician care.
+  > - **Dataset C (Complex Multi-Provider Case):** Elena Rostova (Claim `20068994 WP`), off work awaiting specialist orthopedic MRI consultation, pain rating 7, complex multi-drug regimen.
+  >
+  > Ensure switching datasets dynamically re-renders all fields and radio/checkbox states instantly without page reload."
 
 ---
 
-## Prompt 5: Dynamic Table Rendering
+## Phase 4: Exercise 2 — Medical & Travel Expense Request Implementation
 
-- **Tool:** AI Assistant
-- **Objective:** Ensure Exercise 2 handles variable numbers of records.
-
+### Prompt 4.1: Six Repeating Expense Tables Architecture
+- **Objective:** Build the Medical & Travel Expense Request with dynamic table generation across all 6 statutory reimbursement categories.
 - **Prompt:**
+  > "Implement Exercise 2 (Medical and Travel Expense Request) in pure Vanilla JavaScript, supporting 6 distinct repeating expense categories:
+  > 1. **Prescription Drugs:** Medication name, prescription date, date purchased, prescribing physician, and dollar amount.
+  > 2. **Over-the-Counter Drugs:** Product name, date purchased, receipt cost, pharmacy/retailer, and medical reason.
+  > 3. **Bandages, Braces & Medical Supplies:** Item description, purchase date, doctor prescription status, provider name, retailer, and cost.
+  > 4. **Parking for Medical Appointments:** Healthcare facility, visit date, meter receipt flag, meter number, and parking fee.
+  > 5. **Mileage for Medical Appointments:** Travel date, clinic address, starting workplace/home address, and round-trip kilometres.
+  > 6. **Bus / Taxi Fare:** Travel date, starting point, medical destination, transit mode (Bus/Taxi), and ticket/fare amount.
+  >
+  > Design a modular rendering function that iterates through array data to dynamically generate table rows with formatted currency, dates, and badges."
 
-> Refactor the Medical & Travel Expense Request tables so that they are generated entirely from arrays in the document data.
->
-> Every table should support:
-> - zero records
-> - one record
-> - multiple records
-> - many records
->
-> Empty tables should display an appropriate empty state without breaking the document layout.
->
-> Ensure column definitions and row rendering remain consistent regardless of dataset size.
->
-> Do not create separate hardcoded HTML structures for each dataset.
+### Prompt 4.2: Stress-Testing & Empty State Handling
+- **Objective:** Ensure tables handle variable row counts gracefully—from 0 records up to 10+ items—without breaking document structure.
+- **Prompt:**
+  > "Implement and test edge-case datasets for Exercise 2:
+  > - **Dataset 1 (Baseline Single Row):** Reference claimant with single-entry expenses across each category.
+  > - **Dataset 2 (Stress Test 10+ Items):** Multi-page claim with 10+ items across prescriptions, mileage, and parking, ensuring robust table layouts and clean column alignment.
+  > - **Dataset 3 (Empty State):** A clean claim with 0 items per category, displaying clear 'No expenses claimed in this category' fallback notices without breaking table headers or document borders."
 
 ---
 
-## Prompt 6: Fixed Physical Page Layout
+## Phase 5: Two-Way Live Editor & Interactive UI Modes
 
-- **Tool:** AI Assistant
-- **Objective:** Correct the difference between normal responsive web layout and fixed document layout.
-
+### Prompt 5.1: Two-Way Bidirectional Data Binding Engine
+- **Objective:** Build an interactive workspace supporting real-time editing, row insertion, and row deletion.
 - **Prompt:**
-
-> The generated documents are print documents rather than ordinary responsive webpages.
->
-> Refactor the document CSS so that each report page has a fixed physical size matching the supplied PDF.
->
-> Establish:
-> - fixed page width
-> - fixed page height
-> - controlled margins
-> - predictable header/footer positions
-> - stable section dimensions
-> - print-specific styles
->
-> The browser viewport may scale the document visually, but the internal report dimensions must not depend on viewport width.
->
-> Prevent normal responsive flex/grid reflow from unexpectedly changing the document structure.
+  > "Create a seamless multi-view interface for the application:
+  > 1. **Document View:** Clean, distraction-free official document view.
+  > 2. **Split View:** Side-by-side interactive live editor on the left with live real-time updating document preview on the right.
+  > 3. **Live Editor:** Direct input controls for every metadata field, radio group, checkbox, and table row.
+  >
+  > Implement dynamic table management in the editor:
+  > - Add new expense rows with default values.
+  > - Remove individual rows dynamically.
+  > - Automatically update the live document preview as the user types."
 
 ---
 
-## Prompt 7: Print CSS & PDF Output
+## Phase 6: Print Engineering, Pagination & PDF Export
 
-- **Tool:** AI Assistant
-- **Objective:** Make browser printing reproduce the intended document pages.
-
+### Prompt 6.1: Print Media CSS & Physical Letter Pagination Rules
+- **Objective:** Guarantee that browser print and PDF generation produce clean, unclipped pages matching standard physical US Letter specifications.
 - **Prompt:**
+  > "Engineer robust CSS print rules (`@media print` and `@page`) for the document generator:
+  > - Set `@page` to `size: letter portrait; margin: 0.4in 0.5in;`.
+  > - Hide application navigation bars, view toggles, zoom controls, preset switchers, and live editor forms during print.
+  > - Use `page-break-inside: avoid; break-inside: avoid;` on section cards, table containers, and signature blocks to prevent awkward mid-element splits across page boundaries.
+  > - Ensure clean background and border rendering by enabling `-webkit-print-color-adjust: exact; print-color-adjust: exact;`."
 
-> Optimize the report renderer for browser printing and PDF export.
->
-> Implement appropriate @page configuration and print media styles.
->
-> When printing:
-> - hide dataset controls
-> - hide editing controls
-> - preserve document backgrounds and borders
-> - preserve page dimensions
-> - preserve header/footer positions
-> - prevent unwanted margins
-> - preserve page breaks
-> - prevent table rows from being split where inappropriate
->
-> Verify that the generated print output has the same physical page structure as the reference document.
+### Prompt 6.2: Sandboxed Iframe Print Solution (Blob URL Window)
+- **Objective:** Overcome browser sandbox restrictions where `window.print()` is blocked inside web preview iframes.
+- **Prompt:**
+  > "When running inside sandboxed browser iframes, direct `window.print()` triggers are frequently blocked by browser security policies.
+  >
+  > Build an isolated printing pipeline:
+  > - Construct a complete standalone HTML document string containing inline styles, vector SVG assets, and rendered document markup.
+  > - Generate an ephemeral `Blob` URL (`URL.createObjectURL(blob)`).
+  > - Open the document in a dedicated standalone browser window (`↗️ Print in New Tab`) with an automated `window.print()` trigger.
+  > - Add a `💾 Save HTML` feature allowing users to download the complete self-contained printable report directly."
 
 ---
 
-## Prompt 8: Dynamic Pagination for Exercise 2
+## Phase 7: Quality Assurance, Visual Polish & Final Verification
 
-- **Tool:** AI Assistant
-- **Objective:** Handle large datasets without destroying the reference layout.
-
+### Prompt 7.1: Visual Hierarchy & Accessibility Audit
+- **Objective:** Verify contrast, typographic alignment, borders, and interactive feedback across all components.
 - **Prompt:**
-
-> Implement controlled pagination for the repeating tables in the Medical & Travel Expense Request.
->
-> The reference dataset must preserve the original page structure.
->
-> When a dataset contains additional rows:
-> - detect when the available page area is exhausted
-> - create a new physical page
-> - continue the table
-> - repeat the table header
-> - preserve column widths
-> - preserve row styling
-> - update Page X of Y
->
-> Do not allow the entire document to freely reflow like a normal webpage.
->
-> Test with:
-> - zero rows
-> - one row
-> - several rows
-> - 10+ rows
-> - 20+ rows
+  > "Conduct a thorough UI/UX and visual fidelity audit:
+  > - Ensure high-contrast, accessible text colors against crisp white/light-gray backgrounds.
+  > - Standardize border radii, table padding, and alignment across all 6 expense tables.
+  > - Add non-intrusive notification toasts for user actions (preset switching, row additions, HTML export).
+  > - Add zoom controls (50% to 150%) so users can inspect fine print details on any screen resolution."
 
 ---
 
-## Prompt 9: Live Form ↔ JSON State
+## Summary of Accomplishments
 
-- **Tool:** AI Assistant
-- **Objective:** Demonstrate the relationship between user-entered data and generated output.
-
-- **Prompt:**
-
-> Add a lightweight data-entry interface for the dynamic document.
->
-> Use a centralized JavaScript submissionData object as the live source of truth.
->
-> The data flow should be:
-
-> Form input
-> → submissionData
-> → document renderer
-
-> Changes to submissionData should update:
-> - form values
-> - rendered document
->
-> Do not modify physical seed JSON files on every keystroke.
->
-> The JSON files should act as initial datasets, while submissionData represents the current live state.
->
-> Keep the binding generic and template-driven.
-
----
-
-## Prompt 10: Visual Fidelity Correction Pass
-
-- **Tool:** AI Assistant
-- **Objective:** Correct visual discrepancies discovered during testing.
-
-- **Prompt:**
-
-> Perform a visual fidelity audit of both generated documents against the supplied reference PDFs.
->
-> Do not assume the current implementation is correct.
->
-> Check page-by-page:
-> - page dimensions
-> - page count
-> - header position
-> - logo size and position
-> - typography
-> - section spacing
-> - borders
-> - field positions
-> - checkbox/radio alignment
-> - table widths
-> - row heights
-> - footer position
-> - page numbers
->
-> Identify discrepancies and correct the implementation.
->
-> The reference dataset must remain visually stable and must not unexpectedly gain additional pages.
-
----
-
-## Prompt 11: Dynamic Dataset Verification
-
-- **Tool:** AI Assistant
-- **Objective:** Verify that the solution is genuinely data-driven.
-
-- **Prompt:**
-
-> Test both exercises using multiple datasets.
->
-> Exercise 1:
-> - reference dataset
-> - alternate dataset
->
-> Exercise 2:
-> - reference dataset
-> - small dataset
-> - large dataset
->
-> Verify that changing the dataset changes only the dynamic content while preserving the document structure.
->
-> Specifically verify:
-> - names
-> - dates
-> - selections
-> - text areas
-> - table rows
-> - amounts
-> - page numbers
-> - pagination
->
-> Report any hardcoded values or reference-specific rendering logic that would prevent a different dataset from working.
-
----
-
-## Prompt 12: Hardcoding & Genericity Audit
-
-- **Tool:** AI Assistant
-- **Objective:** Ensure the renderer is not secretly designed only for the supplied PDFs.
-
-- **Prompt:**
-
-> Perform a complete hardcoding audit.
->
-> Search the implementation for:
-> - hardcoded submitted values
-> - hardcoded worker names
-> - hardcoded claim numbers
-> - hardcoded expense rows
-> - reference-specific conditional rendering
-> - dataset-specific HTML
-> - renderer logic that only works for the two supplied forms
->
-> The generic renderer should operate on template configuration and data.
->
-> Reference-specific layout information may exist in template configuration, but the rendering engine itself must not contain business-specific values.
->
-> Create a synthetic third dataset/template to verify that the renderer can handle a structurally different document.
-
----
-
-## Prompt 13: Final Regression & Submission Audit
-
-- **Tool:** AI Assistant
-- **Objective:** Perform a final verification before submission.
-
-- **Prompt:**
-
-> Perform a final end-to-end audit of the Diona Technologies assignment.
->
-> Verify:
->
-> Exercise 1:
-> - reference dataset
-> - alternate dataset
-> - correct page count
-> - correct layout
-> - dynamic values
-> - print output
->
-> Exercise 2:
-> - reference dataset
-> - small dataset
-> - large dataset
-> - dynamic tables
-> - pagination
-> - repeated table headers
-> - Page X of Y
-> - print output
->
-> Also verify:
-> - HTML/CSS/JavaScript requirement
-> - no static screenshot-based implementation
-> - no hardcoded submitted data
-> - dynamic dataset switching
-> - live data binding
-> - browser functionality
-> - print functionality
->
-> Do not claim an item passes unless it has actually been tested.
->
-> Provide a final list of:
-> - completed requirements
-> - remaining issues
-> - known limitations
-> - files changed
-> - tests performed
-
----
-
-## Prompt 14: Final Code Cleanup
-
-- **Tool:** AI Assistant
-- **Objective:** Clean the implementation without changing functionality.
-
-- **Prompt:**
-
-> Perform a final code-quality pass without changing the application's behavior.
->
-> Remove:
-> - dead code
-> - unused CSS
-> - duplicate rendering logic
-> - unused datasets
-> - debugging statements
-> - unnecessary dependencies
->
-> Ensure:
-> - HTML is valid
-> - CSS is organized
-> - JavaScript is readable
-> - functions have clear responsibilities
-> - data and rendering remain separated
-> - no assignment functionality is accidentally removed
->
-> Do not introduce new features during this pass.
+| Module | Implementation Status | Highlights |
+|---|---|---|
+| **Exercise 1: Worker Progress Report** | Complete | Full claim metadata, RTW status, 1–10 visual pain scale, healthcare visits, medication regimen, and certification block. |
+| **Exercise 2: Expense Request** | Complete | 6 repeating tables (Rx, OTC, Supplies, Parking, Mileage, Bus/Taxi) with dynamic row generation. |
+| **Data Engine & Presets** | Complete | Pure JavaScript state model with 6 distinct test datasets (A, B, C / 1, 2, 3). |
+| **Two-Way Live Editor** | Complete | Real-time input binding, dynamic row addition/deletion, and Split View mode. |
+| **Vector Branding** | Complete | Scalable inline vector SVG of official WCB Manitoba bison logo. |
+| **Print & PDF System** | Complete | Letter sizing, `@media print` pagination controls, standalone Blob URL print window, and HTML export. |
+| **Tech Stack Compliance** | Complete | 100% pure HTML5, CSS3, and Vanilla JavaScript with zero external frameworks. |
